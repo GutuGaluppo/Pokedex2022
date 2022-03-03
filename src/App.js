@@ -21,7 +21,6 @@ function App() {
 
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error :(</p>;
-	console.log('data', data.allPokemon);
 
 	const filteredPokemon = pokemons.filter(pokemon => {
 		const toLowerCaseName = pokemon.name.toLowerCase();
