@@ -1,26 +1,35 @@
 import React from 'react'
+import { ThemeProvider } from 'styled-components';
+import { Card, TitleContainer, Title, TypeList, ImgContenainer } from './pokemonCard-style'
+import PokemonTypes from './PokemonTypes/PokemonTypes';
 
 function PokemonCard({ pokemon }) {
-	// TODO:
-	// - Captialize the first letter of the name
 
 	const captilizeFirstLetter = name => {
 		return name.charAt(0).toUpperCase() + name.slice(1);
 	};
 
-	return <li>
-		<p>{captilizeFirstLetter(pokemon.name)}</p>
-		<div
-			style={{
-				width: 'min-content',
-				padding: 10,
-				background: `rgba(${pokemon.dominant_color.r}, ${pokemon.dominant_color.g}, ${pokemon.dominant_color.b}, 0.8)`,
-				borderRadius: `50%`
-			}}
-		>
-			<img src={pokemon.sprites.front_default} alt={pokemon.name} />
-		</div>
-	</li>
+	const pokemonColor = `${pokemon.dominant_color.r}, ${pokemon.dominant_color.g}, ${pokemon.dominant_color.b}`
+
+	const theme = {
+		color: pokemonColor
+	}
+
+	return <ThemeProvider theme={theme}>
+		<Card>
+			<TitleContainer>
+				<Title>{captilizeFirstLetter(pokemon.name)}</Title>
+			</TitleContainer>
+			<ImgContenainer>
+				<img src={pokemon.sprites.front_default} alt={pokemon.name} width="200px" />
+			</ImgContenainer>
+			<TypeList>
+				{pokemon.types.map(type => (
+					<PokemonTypes key={type.name} type={type} />
+				))}
+			</TypeList>
+		</Card>
+	</ThemeProvider>
 }
 
 export default PokemonCard
