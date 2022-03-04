@@ -1,17 +1,16 @@
 import PokemonCard from '../PokemonCard/PokemonCard';
+import { ListContainer } from './pokemonContainer-style.js';
 
-function PokemonContainer({ filteredPokemon }) {
+function PokemonContainer({ filteredList }) {
 
 	return (
-		<div>
-			<ul style={{ marginInline: "auto", width: 300 }}>
-				{
-					filteredPokemon.map(pokemon => (
-						<PokemonCard key={pokemon.id} pokemon={pokemon} />
-					))
-				}
-			</ul>
-		</div>
+		<ListContainer>
+			{
+				filteredList.map(pokemon => (
+					<PokemonCard key={pokemon.id} pokemon={pokemon} />
+				))
+			}
+		</ListContainer>
 	)
 }
 
