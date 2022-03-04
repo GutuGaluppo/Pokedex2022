@@ -11,16 +11,20 @@ export const Loader = styled.div`
 `
 
 const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
+  0% {
+    transform: rotate(0deg) scale(.5);	
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: rotate(360deg) scale(2);
   }
+	100% {
+		transform: rotate(720deg) scale(.5);
+	}
 `;
 export const PokeBall = styled.div`
+	margin: 50px auto;
   display: inline-block;
-  animation: ${rotate} 2s linear infinite;
+  animation: ${rotate} 3s linear infinite;
   padding: 5px;
   font-size: 1.2rem;
 	width: 200px;
