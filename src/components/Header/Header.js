@@ -1,17 +1,16 @@
 import React from 'react'
-import './header.css'
+import { Head } from './header-style.js'
+import Title from '../../images/logo_title.svg'
 
-import Pokeball from '../../images/pokeball.png'
-
-function Header({ setSearchPokemon, searchPokemon }) {
-	return <div className="header">
-		<img src={Pokeball} alt="pokeball" width='50px' />
+const Header = ({ setSearchPokemon, searchPokemon }) => {
+	return <Head>
+		<img src={Title} alt="title" width='400px' />
 		<input
 			type="search"
 			value={searchPokemon}
 			onChange={e => setSearchPokemon(e.target.value)}
 		/>
-	</div>
+	</Head>
 }
 
 export default Header
