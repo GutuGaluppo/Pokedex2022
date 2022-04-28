@@ -11,7 +11,11 @@ export const Card = styled.li`
 	padding: 10px;
 	border-radius: 16px;
 	background: rgba(${props => props.theme.color}, 0.19);
-	box-shadow: 0 4px 10px rgba(${props => props.theme.color}, 0.1);
+	${({ isFavorite }) => isFavorite ? `
+	box-shadow: 0 4px 10px rgba(${props => props.theme.color}, 0.5);`
+		:
+		`box-shadow: 0 4px 10px rgba(${props => props.theme.color}, 0.1);`
+	}
 	backdrop-filter: blur(14.8px);
 	-webkit-backdrop-filter: blur(14.8px);
 	border-bottom: 3px solid rgba(${props => props.theme.color}, 0.3);
@@ -19,18 +23,21 @@ export const Card = styled.li`
 	`
 
 export const ImgContenainer = styled.div`
-		margin: 80px auto;
-		width: 200px;
-		height: 200px;
-		border: 2px solid white;
-		border-radius: 50%;
-		padding: 10px;
-		background: rgba(${props => props.theme.color}, 0.19);
-		box-shadow: 0 4px 10px rgba(${props => props.theme.color}, 0.1);
-		backdrop-filter: blur(14.8px);
-		-webkit-backdrop-filter: blur(14.8px);
-		border: 1px solid rgba(${props => props.theme.color}, 0.3);
-		`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px auto 70px;
+	width: 200px;
+	height: 200px;
+	border: 2px solid white;
+	border-radius: 50%;
+	padding: 10px;
+	background: rgba(${props => props.theme.color}, 0.19);
+	box-shadow: 0 4px 10px rgba(${props => props.theme.color}, 0.1);
+	backdrop-filter: blur(14.8px);
+	-webkit-backdrop-filter: blur(14.8px);
+	border: 1px solid rgba(${props => props.theme.color}, 0.3);
+`
 
 export const TitleContainer = styled.div`
 	position: absolute;

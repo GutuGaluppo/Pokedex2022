@@ -21,11 +21,11 @@ export const GET_ALL_POKEMON = gql`
 `
 
 // Get Types only
-
-// export const GET_POKEMON_TYPES = gql`
-// {
-// 	types {
-// 		name
-// 	}
-// }
-// `
+export const GET_POKEMON_TYPES = gql`
+{
+	allTypes {
+		id
+		name
+	}
+}
+`

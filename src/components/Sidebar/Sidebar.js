@@ -1,7 +1,8 @@
 import React from 'react'
 import { Aside } from './side-style'
 
-function Sidebar({ pokemonType, setSearchPokemon, searchPokemon }) {
+
+function Sidebar({ pokemonType, searchPokemonName, nameFilter, pokemons, filterByTypes, sortByName }) {
 
 	return (
 		<Aside>
@@ -11,29 +12,48 @@ function Sidebar({ pokemonType, setSearchPokemon, searchPokemon }) {
 
 			<input
 				type="search"
-				value={searchPokemon}
-				onChange={e => setSearchPokemon(e.target.value)}
+				value={nameFilter}
+				onChange={e => searchPokemonName(e.target.value)}
 			/>
 			{/* TODO:
-				1. create a checkbox for each type
-				2. on check, add type to array
-				3. on uncheck, remove type from array
+				1. create a button for each type
+				2. on click, add type to array
+				3. on click button "all", show all pokemon
 				4. filter pokemons by selected types
 			 */}
 			<h4>Type</h4>
 			{
-				pokemonType.map((type, index) => {
-					return <div key={index} class="mx-4 my-2">
+				pokemonType.sort().map((type, index) => {
+					return <div key={index}>
 						<input
 							type="checkbox"
-							value={type.name}
-							name={type.name}
-							onChange={(e) => setSearchPokemon(e.target.checked, type.name)}
+							value={type}
+							name={type}
+							onChange={(e) => filterByTypes(e.target.checked, type)}
 						/>
-						<label htmlFor={type}>{type}</label>
+						<label htmlFor={type} style={{ marginLeft: 10 }}>{type}</label>
 					</div>
 				})
 			}
+
+			{/* SORT BY NAME */}
+			{/* <input type="checkbox" onChange={(e) => sortByName(e.target.checked, pokemons)} /> */}
+
+			{/* {
+				pokemons.map(pokemon => {
+					const pokemonColor = `rgb(${pokemon.dominant_color.r}, ${pokemon.dominant_color.g}, ${pokemon.dominant_color.b})`
+
+					return <div key={pokemon.id}>
+						<Button
+							value={pokemon.name}
+							onClick={() => searchPokemonName(pokemon.name)}
+							typeColor={pokemonColor}
+						>
+							{pokemon.name}
+						</Button>
+					</div>
+				})
+			} */}
 		</Aside>
 	)
 }
